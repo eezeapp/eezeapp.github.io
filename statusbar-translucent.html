@@ -8,12 +8,16 @@
     <script>
         function getUrlParam(name)
         {
-            var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-            var r = window.location.search.substr(1).match(reg);
-            if (r!=null) return unescape(r[2]);
-            return null;
+            const params = new Proxy(new URLSearchParams(window.location.search), {
+                get: (searchParams, prop) => searchParams.get(prop),
+            });
+            let value = params[ name ];
+            return value
         }
-        window.location.href = getUrlParam('url');
+        const url = getUrlParam('url');
+        if( url ) {
+            window.location.href = url;
+        }
     </script>
 </head>
 <body></body>
