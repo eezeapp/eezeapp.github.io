@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <script>
+        function getUrlParam(name)
+        {
+            var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r!=null) return unescape(r[2]);
+            return null;
+        }
+        window.location.href = getUrlParam('url');
+    </script>
+</head>
+<body></body>
+</html>
